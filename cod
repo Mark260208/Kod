@@ -1,0 +1,22 @@
+from tkinter import *
+import random
+score, max_score = 0, 20
+size_x, size_y = 1280, 700
+def put():
+    global button
+    button = Button(root, text='Click me', bg= 'gray', activebackground= 'red', command= click)
+    button.place(x=random.randint(20,size_x-20),y=random.randint(10,size_y-10))
+def click():
+    global score
+    button.destroy()
+    score+=1
+    if score < 20:
+        put()
+    else: 
+        Label(root, text='You win!!!').place(relx=0.5,rely=0.5)
+root = Tk()
+root.title('Playing')
+root.geometry(f'{size_x}x{size_y}')
+root.resizable(False, False)
+put()
+root.mainloop()
